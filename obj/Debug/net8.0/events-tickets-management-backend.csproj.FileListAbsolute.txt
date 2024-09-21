@@ -104,3 +104,4 @@ C:\Coding\Projects\events-tickets-management-backend\bin\Debug\net8.0\ru\Microso
 C:\Coding\Projects\events-tickets-management-backend\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Coding\Projects\events-tickets-management-backend\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Coding\Projects\events-tickets-management-backend\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+c:\Coding\Projects\events-tickets-management-backend\obj\Debug\net8.0\events-tickets-management-backend.sourcelink.json

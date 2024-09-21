@@ -52,21 +52,15 @@ namespace events_tickets_management_backend.Services
             return events.FirstOrDefault();
         }
 
-        public async Task<Event?> GetEventByIdAsync(int id)
-        {
-            return await _context.Events
-                .Include(e => e.Artist)
-                .Include(e => e.Location)
-                .FirstOrDefaultAsync(e => e.Id == id);
-        }
-
-        public async Task<Event> CreateEventAsync(EventCreateDto eventDto)
+        public async Task<Event> CreateEvent(EventCreateDto eventDto)
         {
             var location = await _context.Locations.FirstOrDefaultAsync(l => l.Address == eventDto.Location) ?? throw new Exception("Location not found");
+            var artist = await _context.Artists.FirstOrDefaultAsync(a => a.Id == eventDto.ArtistId) ?? throw new Exception("Artist not found");
+
             var eventEntity = new Event
             {
                 Title = eventDto.Title,
-                ArtistId = eventDto.ArtistId,
+                Artist = artist,
                 BeginDatetime = eventDto.BeginDateTime,
                 EndDatetime = eventDto.EndDateTime,
                 LocationId = location.Id
@@ -123,6 +117,7 @@ namespace events_tickets_management_backend.Services
 
             return new SuccessServiceResponse
             {
+                Data = eventEntity,
                 Message = "Event updated successfully"
             };
         }

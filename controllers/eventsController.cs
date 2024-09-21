@@ -82,8 +82,14 @@ namespace events_tickets_management_backend.Controllers
 
             try
             {
-                var createdEvent = await _eventService.CreateEventAsync(eventDto);
-                return Ok();
+                var createdEvent = await _eventService.CreateEvent(eventDto);
+                return CreatedAtAction(nameof(CreateEvent), new {
+                    createdEvent.Artist.Name,
+                    createdEvent.Title,
+                    createdEvent.BeginDatetime,
+                    createdEvent.EndDatetime,
+                    createdEvent.Location.Address
+                });
             }
             catch (Exception ex)
             {
@@ -107,7 +113,13 @@ namespace events_tickets_management_backend.Controllers
                 {
                     return StatusCode(response.StatusCode, response.Message);
                 }
-                return Ok(new { message = "Event updated successfully" });
+
+                if (updatedEvent is SuccessServiceResponse sr)
+                {
+                    return Ok(new { sr.Data, message = "Event updated successfully" });
+                }
+
+                return StatusCode(500, new { message = "Error updating event" });
             }
             catch (Exception ex)
             {

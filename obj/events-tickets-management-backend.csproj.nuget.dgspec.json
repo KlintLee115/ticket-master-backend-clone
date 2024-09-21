@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Coding\\Projects\\events-tickets-management-backend\\events-tickets-management-backend.csproj": {}
+    "c:\\Coding\\Projects\\events-tickets-management-backend\\events-tickets-management-backend.csproj": {}
   },
   "projects": {
-    "C:\\Coding\\Projects\\events-tickets-management-backend\\events-tickets-management-backend.csproj": {
+    "c:\\Coding\\Projects\\events-tickets-management-backend\\events-tickets-management-backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Coding\\Projects\\events-tickets-management-backend\\events-tickets-management-backend.csproj",
+        "projectUniqueName": "c:\\Coding\\Projects\\events-tickets-management-backend\\events-tickets-management-backend.csproj",
         "projectName": "events-tickets-management-backend",
-        "projectPath": "C:\\Coding\\Projects\\events-tickets-management-backend\\events-tickets-management-backend.csproj",
+        "projectPath": "c:\\Coding\\Projects\\events-tickets-management-backend\\events-tickets-management-backend.csproj",
         "packagesPath": "C:\\Users\\klint\\.nuget\\packages\\",
-        "outputPath": "C:\\Coding\\Projects\\events-tickets-management-backend\\obj\\",
+        "outputPath": "c:\\Coding\\Projects\\events-tickets-management-backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\klint\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ivR/sw9yDgA=",
+  "dgSpecHash": "Kj200sqG9UA=",
   "success": true,
-  "projectFilePath": "C:\\Coding\\Projects\\events-tickets-management-backend\\events-tickets-management-backend.csproj",
+  "projectFilePath": "c:\\Coding\\Projects\\events-tickets-management-backend\\events-tickets-management-backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\klint\\.nuget\\packages\\dotenv.net\\3.2.0\\dotenv.net.3.2.0.nupkg.sha512",
     "C:\\Users\\klint\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

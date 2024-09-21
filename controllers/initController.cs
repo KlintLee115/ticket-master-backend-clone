@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using events_tickets_management_backend.Models;
 using events_tickets_management_backend.Services;
-using System.Threading.Tasks;
 
 namespace events_tickets_management_backend.controllers
 {
@@ -38,7 +37,7 @@ namespace events_tickets_management_backend.controllers
                 return StatusCode(res.StatusCode, res.Message);
             }
 
-            return Ok(new { message = $"{request.NumberOfSeats} seats initialized for event {request.EventId}" });
+            return CreatedAtAction(nameof(_initService.CreateTicketsForEvent), new { message = $"{request.NumberOfSeats} seats initialized for event {request.EventId}" });
         }
 
         /// <summary>
@@ -51,8 +50,12 @@ namespace events_tickets_management_backend.controllers
 
             if (result is FailServiceResponse res) return StatusCode(res.StatusCode, res.Message);
 
-            return Ok(new { message = "Artists successfully initialized" });
+            if (result is SuccessServiceResponse sr)
+            {
+                return CreatedAtAction(nameof(_initService.CreateArtists), new { sr.Data });
+            }
 
+            return StatusCode(500, new { message = "Error creating artists" });
         }
 
         /// <summary>
@@ -65,8 +68,12 @@ namespace events_tickets_management_backend.controllers
 
             if (result is FailServiceResponse res) return StatusCode(res.StatusCode, res.Message);
 
-            return Ok(new { message = "Events successfully initialized" });
+            if (result is SuccessServiceResponse sr)
+            {
+                return CreatedAtAction(nameof(_initService.CreateEvents), new { sr.Data });
+            }
 
+            return StatusCode(500, new { message = "Error creating events" });
         }
 
         /// <summary>
@@ -79,7 +86,12 @@ namespace events_tickets_management_backend.controllers
 
             if (result is FailServiceResponse res) return StatusCode(res.StatusCode, res.Message);
 
-            return Ok(new { message = "Locations successfully initialized" });
+            if (result is SuccessServiceResponse sr)
+            {
+                return CreatedAtAction(nameof(_initService.CreateLocations), new { sr.Data });
+            }
+
+            return StatusCode(500, new { message = "Error creating locations" });
         }
     }
 

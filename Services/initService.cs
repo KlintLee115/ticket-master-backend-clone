@@ -37,7 +37,7 @@ namespace events_tickets_management_backend.Services
                 await _context.Tickets.AddRangeAsync(ticketData);
                 await _context.SaveChangesAsync();
 
-                return new SuccessServiceResponse { };
+                return new SuccessServiceResponse {Data = ticketData };
             }
             catch (Exception ex)
             {
@@ -53,20 +53,46 @@ namespace events_tickets_management_backend.Services
                 var locations = new List<string>
             {
                 "Event Hall, New York, NY, USA",
-                // ... (other locations)
-                "Forest National, Brussels, Belgium"
+                "Madison Square Garden, New York, NY, USA",
+    "Wembley Stadium, London, UK",
+    "Sydney Opera House, Sydney, Australia",
+    "Staples Center, Los Angeles, CA, USA",
+    "Royal Albert Hall, London, UK",
+    "Red Rocks Amphitheatre, Morrison, CO, USA",
+    "Tokyo Dome, Tokyo, Japan",
+    "O2 Arena, London, UK",
+    "MGM Grand Garden Arena, Las Vegas, NV, USA",
+    "Barclays Center, Brooklyn, NY, USA",
+    "AccorHotels Arena, Paris, France",
+    "Mercedes-Benz Arena, Berlin, Germany",
+    "Rogers Arena, Vancouver, BC, Canada",
+    "Forest National, Brussels, Belgium",
+            "Radio City Music Hall, New York, NY, USA",
+    "The Forum, Inglewood, CA, USA",
+    "Rod Laver Arena, Melbourne, Australia",
+    "Olympic Stadium, Seoul, South Korea",
+    "Bercy Arena, Paris, France",
+    "SSE Hydro, Glasgow, Scotland",
+    "Amway Center, Orlando, FL, USA",
+    "Scotiabank Arena, Toronto, ON, Canada",
+    "Sportpaleis, Antwerp, Belgium",
+    "Ziggo Dome, Amsterdam, Netherlands",
+    "Estadio Azteca, Mexico City, Mexico",
+    "Allianz Arena, Munich, Germany",
+    "Maracanã Stadium, Rio de Janeiro, Brazil",
+    "U Arena, Nanterre, France",
+    "Arena di Verona, Verona, Italy"
             };
 
                 var locationEntities = locations.Select(address => new Location { Address = address }).ToList();
                 await _context.Locations.AddRangeAsync(locationEntities);
                 await _context.SaveChangesAsync();
 
-                return new SuccessServiceResponse { };
+                return new SuccessServiceResponse { Data = locationEntities };
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                return new FailServiceResponse { StatusCode = 500, Message = "Failed to create locations" };
+                return new FailServiceResponse { StatusCode = 500, Message = ex.Message };
             }
         }
 
@@ -75,22 +101,48 @@ namespace events_tickets_management_backend.Services
             try
             {
                 var names = new List<string>
-            {
+                {
                 "Drake",
-                // ... (other artist names)
-                "Migos"
-            };
+    "Taylor Swift",
+    "Beyoncé",
+    "Ed Sheeran",
+    "Adele",
+    "Kendrick Lamar",
+    "Billie Eilish",
+    "The Weeknd",
+    "Bruno Mars",
+    "Post Malone",
+    "Ariana Grande",
+    "Harry Styles",
+    "Lady Gaga",
+    "Justin Bieber",
+    "Dua Lipa",
+    "Rihanna",
+    "Cardi B",
+    "Kanye West",
+    "Shawn Mendes",
+    "Travis Scott",
+    "Migos",
+    "Lizzo",
+    "Doja Cat",
+    "SZA",
+    "Bad Bunny",
+    "J. Cole",
+    "Lana Del Rey",
+    "H.E.R.",
+    "Olivia Rodrigo",
+    "Lil Nas X"
+                };
 
                 var artistEntities = names.Select(name => new Artist { Name = name }).ToList();
                 await _context.Artists.AddRangeAsync(artistEntities);
                 await _context.SaveChangesAsync();
 
-                return new SuccessServiceResponse { };
+                return new SuccessServiceResponse {Data = artistEntities };
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                return new FailServiceResponse { StatusCode = 500, Message = "Failed to create artists" };
+                return new FailServiceResponse { StatusCode = 500, Message = ex.Message };
             }
         }
 
@@ -123,12 +175,11 @@ namespace events_tickets_management_backend.Services
                 await _context.Events.AddRangeAsync(events);
                 await _context.SaveChangesAsync();
 
-                return new SuccessServiceResponse { };
+                return new SuccessServiceResponse { Data = events };
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                return new FailServiceResponse { StatusCode = 500, Message = "Failed to create events" };
+                return new FailServiceResponse { StatusCode = 500, Message = ex.Message };
             }
         }
 
